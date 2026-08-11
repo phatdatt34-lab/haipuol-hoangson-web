@@ -1,49 +1,95 @@
-// Đảm bảo DOM đã được tải hoàn toàn trước khi chạy JS
 document.addEventListener('DOMContentLoaded', function() {
     
     // ==========================================
-    // 1. Chức năng Lightbox cho Thư Viện Hình Ảnh
+    // 1. Chức năng Lightbox cho Dịch Vụ (Cập nhật dạng Array/Slider)
     // ==========================================
-    const galleryItems = document.querySelectorAll('.gallery-item img');
+    const packageCards = document.querySelectorAll('.package-card');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.querySelector('.close-lightbox');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const caption = document.getElementById('lightbox-caption');
 
-    // Mở Lightbox khi click vào ảnh
-    galleryItems.forEach(item => {
-        item.addEventListener('click', function() {
-            lightbox.style.display = 'flex'; // Hiển thị overlay mờ
-            lightboxImg.src = this.src;      // Lấy link ảnh được click gán vào ảnh trong lightbox
+    let currentImages = [];
+    let currentIndex = 0;
+
+    // Lắng nghe sự kiện click trên từng gói dịch vụ
+    packageCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Lấy danh sách ảnh từ thuộc tính data-images
+            const imagesData = this.getAttribute('data-images');
             
-            // Ngăn cuộn trang ở dưới khi mở lightbox
-            document.body.style.overflow = 'hidden'; 
+            if (imagesData) {
+                try {
+                    currentImages = JSON.parse(imagesData);
+                    currentIndex = 0;
+                    
+                    if (currentImages.length > 0) {
+                        showImage(currentIndex);
+                        lightbox.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                } catch (e) {
+                    console.error("Lỗi parse data-images", e);
+                }
+            }
         });
     });
 
-    // Đóng Lightbox khi click vào nút X
-    closeBtn.addEventListener('click', function() {
-        closeLightbox();
-    });
+    function showImage(index) {
+        lightboxImg.src = currentImages[index];
+        caption.textContent = `Hình ảnh ${index + 1} / ${currentImages.length}`;
+    }
 
-    // Đóng Lightbox khi click ra ngoài vùng ảnh
-    lightbox.addEventListener('click', function(e) {
-        if (e.target !== lightboxImg) {
-            closeLightbox();
-        }
-    });
-
-    // Đóng Lightbox bằng nút ESC trên bàn phím
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && lightbox.style.display === 'flex') {
-            closeLightbox();
-        }
-    });
-
-    // Hàm tiện ích để đóng lightbox
     function closeLightbox() {
         lightbox.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Cho phép cuộn trang lại
+        document.body.style.overflow = 'auto';
     }
+
+    // Nút điều hướng
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentImages.length > 0) {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : currentImages.length - 1;
+                showImage(currentIndex);
+            }
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentImages.length > 0) {
+                currentIndex = (currentIndex < currentImages.length - 1) ? currentIndex + 1 : 0;
+                showImage(currentIndex);
+            }
+        });
+    }
+
+    // Đóng Lightbox khi click vào nút X
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeLightbox);
+    }
+
+    // Đóng Lightbox khi click ra ngoài vùng ảnh
+    if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox || e.target.classList.contains('lightbox-img-wrapper')) {
+                closeLightbox();
+            }
+        });
+    }
+
+    // Hỗ trợ phím mũi tên và ESC
+    document.addEventListener('keydown', function(e) {
+        if (lightbox && lightbox.style.display === 'flex') {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft' && prevBtn) prevBtn.click();
+            if (e.key === 'ArrowRight' && nextBtn) nextBtn.click();
+        }
+    });
 
     // ==========================================
     // 2. Chức năng Header trong suốt / Đổi màu khi cuộn
@@ -52,10 +98,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
-            header.style.backgroundColor = 'rgba(18, 18, 18, 0.98)';
-            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
         } else {
-            header.style.backgroundColor = 'rgba(18, 18, 18, 0.8)';
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
             header.style.boxShadow = 'none';
         }
     });
