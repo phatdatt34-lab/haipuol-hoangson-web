@@ -64,7 +64,10 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; }
     border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
-.header-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+.header-container { 
+    display: flex; justify-content: space-between; align-items: center; 
+    height: 110px; /* Tăng chiều cao để chứa vừa Logo to */
+}
 
 /* LOGO BO TRÒN THEO YÊU CẦU */
 .logo a {
@@ -73,7 +76,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; }
     letter-spacing: 1px; display: flex; align-items: center; gap: 15px;
 }
 .logo a img {
-    width: 50px; height: 50px;
+    width: 85px; height: 85px;
     border-radius: 50%; /* Bo tròn hoàn toàn 50% */
     object-fit: cover;
     border: 2px solid var(--color-gold);
@@ -101,7 +104,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; }
     align-items: center; 
     justify-content: center;
     text-align: center; 
-    padding-top: 80px;
+    padding-top: 110px; /* Đồng bộ với chiều cao mới của Header */
 }
 .hero-overlay {
     position: absolute; 
@@ -162,12 +165,64 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; }
 .package-card h3 { font-size: 1.6rem; color: var(--color-gold); margin-bottom: 10px; }
 .package-card p { color: var(--color-gray); line-height: 1.6; margin-top: 10px; }
 
-/* Thư Viện Cũ */
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; margin-top: 40px; }
-.gallery-item { overflow: hidden; border-radius: 4px; cursor: pointer; position: relative; aspect-ratio: 4/3; }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.gallery-item:hover img { transform: scale(1.1); }
+/* Giới Thiệu (About) */
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.about-container h2 {
+    font-size: 2rem;
+    line-height: 1.4;
+    margin-bottom: 30px;
+}
+.about-container h3 {
+    text-align: center;
+    color: var(--color-gold);
+    font-size: 1.6rem;
+    margin: 40px 0 20px;
+}
+.about-container p {
+    color: var(--color-gray);
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.about-container ul {
+    list-style: none;
+    margin-bottom: 25px;
+    padding-left: 10px;
+}
+.about-container ul li {
+    color: var(--color-gray);
+    line-height: 1.8;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+.about-container ul li::before {
+    content: '•';
+    color: var(--color-gold);
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem;
+    top: -4px;
+}
 
+/* Hình ảnh trong phần Giới Thiệu */
+.about-image-wrapper {
+    width: 100%;
+    margin: 30px 0;
+    text-align: center;
+}
+.about-image-wrapper img {
+    width: 100%;
+    max-height: 450px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: block;
+}
 /* ==========================================
    CSS LIGHTBOX MODAL MỚI THEO YÊU CẦU
 ========================================== */
