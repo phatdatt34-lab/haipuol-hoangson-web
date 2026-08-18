@@ -451,6 +451,25 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; }
         font-size: 16px;
     }
     .package-card.featured { transform: scale(1); } 
+    
+    /* Ép cột ngang trên mobile cho Gói & Dịch vụ */
+    .services-grid, .packages-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+    
+    /* Thu nhỏ Dịch vụ bổ sung */
+    .service-card { padding: 10px !important; }
+    .service-icon { font-size: 1.5rem !important; margin-bottom: 10px !important; }
+    .service-card h3 { font-size: 13px !important; margin-bottom: 5px !important; }
+    .service-card p { font-size: 10px !important; line-height: 1.4 !important; }
+    
+    /* Thu nhỏ Gói dịch vụ */
+    .package-card { padding: 10px !important; }
+    .package-card h3 { font-size: 14px !important; margin-bottom: 5px !important; }
+    .package-card p { font-size: 11px !important; line-height: 1.4 !important; margin-top: 5px !important; }
+    .package-img { margin-bottom: 8px !important; border-radius: 4px !important; width: 100% !important; height: auto !important; object-fit: cover !important; }
+    .package-card .btn-sm { padding: 5px 10px !important; font-size: 10px !important; margin-bottom: 5px !important; }
     .floating-zalo { left: 20px; bottom: 20px; width: 50px; height: 50px; } 
     .floating-zalo img { width: 25px; height: 25px; } 
     .floating-phone { left: 20px; bottom: 85px; width: 50px; height: 50px; font-size: 20px; }
