@@ -465,18 +465,40 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; }
     .hero { padding-top: 80px; }
     
     /* Flower Layout Mobile */
-    .flower-layout { grid-template-columns: 1fr; }
-    .center-circle {
+    .flower-layout {
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px; 
         position: relative; 
-        transform: none; 
-        top: 0; left: 0; 
-        margin: 0 auto 30px; 
-        width: 200px; height: 200px;
+        margin: 40px auto;
+    }
+    .center-circle {
+        position: absolute; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        width: 120px; 
+        height: 120px; 
+        border-width: 4px; 
+        z-index: 5; 
+        margin: 0;
     }
     .petal-card {
-        border-radius: 15px !important; 
-        padding: 25px !important;
+        padding: 15px;
     }
+    .petal-card h4 {
+        font-size: 11px;
+        margin-bottom: 5px;
+    }
+    .petal-card p {
+        font-size: 9.5px;
+        line-height: 1.4;
+    }
+    .card-tl { border-radius: 10px 10px 70px 10px; padding: 15px 45px 25px 15px; }
+    .card-tr { border-radius: 10px 10px 10px 70px; padding: 15px 15px 25px 45px; }
+    .card-bl { border-radius: 10px 70px 10px 10px; padding: 25px 45px 15px 15px; }
+    .card-br { border-radius: 70px 10px 10px 10px; padding: 25px 15px 15px 45px; }
+
     .package-tags {
         flex-wrap: wrap; 
         justify-content: center;
