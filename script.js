@@ -143,4 +143,32 @@ document.addEventListener('DOMContentLoaded', function() {
             header.style.boxShadow = 'none';
         }
     });
+
+    // ==========================================
+    // 3. Hamburger Menu cho Mobile
+    // ==========================================
+    const mobileMenuBtn = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (mobileMenuBtn && navMenu) {
+        mobileMenuBtn.addEventListener('click', function(e) {
+            navMenu.classList.toggle('active');
+            e.stopPropagation();
+        });
+
+        // Đóng menu khi click ra ngoài
+        document.addEventListener('click', function(e) {
+            if (!navMenu.contains(e.target) && e.target !== mobileMenuBtn && !mobileMenuBtn.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Đóng menu khi bấm vào bất kỳ link nào bên trong
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    }
 });

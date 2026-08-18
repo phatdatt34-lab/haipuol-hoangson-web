@@ -87,9 +87,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; }
 .nav-menu a { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
 .nav-menu a:hover { color: var(--color-gold); }
 
-.header-contact { display: flex; flex-direction: column; align-items: flex-end; }
-.header-contact span { font-size: 0.8rem; color: var(--color-gray); }
-.header-contact a { color: var(--color-gold); font-size: 1.2rem; font-weight: 700; }
+.menu-toggle { display: none; }
 
 /* BANNER TRANG CHỦ THEO YÊU CẦU */
 .hero {
@@ -148,63 +146,126 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; }
 .package-card h3 { font-size: 1.6rem; color: var(--color-gold); margin-bottom: 10px; }
 .package-card p { color: var(--color-gray); line-height: 1.6; margin-top: 10px; }
 
-/* Giới Thiệu (About) */
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+/* ==========================================
+   GIỚI THIỆU (PREMIUM)
+========================================== */
+.about-premium {
+    position: relative; 
+    padding: 80px 0; 
+    background-image: url('./images/trang-chu/banner-main.png'); 
+    background-size: cover; 
+    background-attachment: fixed; 
+    background-position: center; 
+    color: #fdfbf7;
 }
-.about-container h2 {
-    font-size: 2rem;
-    line-height: 1.4;
-    margin-bottom: 30px;
+.about-bg-overlay {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(18, 18, 18, 0.9);
 }
-.about-container h3 {
+.relative-z {
+    position: relative; 
+    z-index: 2;
+}
+.about-premium .section-title, 
+.about-premium .subsection-title {
+    color: #cfa85e;
+}
+.about-intro-text p {
+    color: #fdfbf7;
+    line-height: 1.8;
     text-align: center;
-    color: var(--color-gold);
-    font-size: 1.6rem;
-    margin: 40px 0 20px;
+    max-width: 900px;
+    margin: 0 auto 30px;
 }
-.about-container p {
-    color: var(--color-gray);
-    line-height: 1.8;
-    margin-bottom: 15px;
-    text-align: justify;
+.subsection-title {
+    margin: 50px 0 30px;
 }
-.about-container ul {
-    list-style: none;
-    margin-bottom: 25px;
-    padding-left: 10px;
-}
-.about-container ul li {
-    color: var(--color-gray);
-    line-height: 1.8;
-    margin-bottom: 10px;
-    position: relative;
-    padding-left: 25px;
-}
-.about-container ul li::before {
-    content: '•';
-    color: var(--color-gold);
-    position: absolute;
-    left: 0;
-    font-size: 1.5rem;
-    top: -4px;
+.text-center {
+    text-align: center;
 }
 
-/* Hình ảnh trong phần Giới Thiệu */
-.about-image-wrapper {
-    width: 100%;
-    margin: 30px 0;
-    text-align: center;
+/* 5. XỬ LÝ LAYOUT CÁNH HOA (.flower-layout) */
+.flower-layout {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; 
+    position: relative; 
+    max-width: 1000px; 
+    margin: 60px auto;
 }
-.about-image-wrapper img {
-    width: 100%;
-    max-height: 450px;
-    border-radius: 8px;
+.center-circle {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 260px; 
+    height: 260px; 
+    border-radius: 50%; 
+    border: 8px solid #cfa85e; 
+    overflow: hidden; 
+    z-index: 5; 
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+.center-circle img {
+    width: 100%; 
+    height: 100%; 
     object-fit: cover;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    display: block;
+}
+.petal-card {
+    background-color: #fff9f0; 
+    color: #333; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+.petal-card h4 {
+    font-size: 18px;
+    color: #cfa85e;
+    margin-bottom: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.petal-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0;
+    color: #444;
+}
+.card-tl { border-radius: 30px 30px 140px 30px; padding: 30px 70px 50px 30px; }
+.card-tr { border-radius: 30px 30px 30px 140px; padding: 30px 30px 50px 70px; }
+.card-bl { border-radius: 30px 140px 30px 30px; padding: 50px 70px 30px 30px; }
+.card-br { border-radius: 140px 30px 30px 30px; padding: 50px 30px 30px 70px; }
+
+/* 6. XỬ LÝ PHẦN DƯỚI (.about-packages-footer) */
+.package-tags {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.package-tags span {
+    border: 1px solid #cfa85e; 
+    padding: 10px 20px; 
+    border-radius: 30px; 
+    color: #cfa85e; 
+    font-weight: bold; 
+    background: rgba(207, 168, 94, 0.1);
+}
+.conclusion-text {
+    margin-top: 40px; 
+    font-size: 1.1rem; 
+    border-top: 1px solid rgba(207,168,94,0.3); 
+    padding-top: 30px;
+    text-align: center;
+    color: #fdfbf7;
+    line-height: 1.8;
 }
 /* ==========================================
    CSS LIGHTBOX MODAL MỚI THEO YÊU CẦU
@@ -317,22 +378,107 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; }
     100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
 }
 
+/* Floating Map */
+.floating-map {
+    position: fixed;
+    bottom: 170px;
+    left: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #ea4335;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    font-size: 24px;
+    box-shadow: 0 4px 15px rgba(234, 67, 53, 0.4);
+    animation: pulse-map 2s infinite;
+}
+@keyframes pulse-map {
+    0% { box-shadow: 0 0 0 0 rgba(234, 67, 53, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(234, 67, 53, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(234, 67, 53, 0); }
+}
+
 /* Responsive */
 @media (max-width: 992px) { 
     .footer-container { grid-template-columns: 1fr; gap: 40px; } 
 }
 @media (max-width: 768px) { 
-    .nav-menu { display: none; } 
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+    .menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #cfa85e;
+        border-radius: 3px;
+    }
+    .nav-menu { 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        width: 100%; 
+        background-color: #fff; 
+        flex-direction: column; 
+        text-align: left; 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+        transform: translateY(-100%); 
+        opacity: 0; 
+        visibility: hidden; 
+        transition: 0.3s ease; 
+        z-index: 1000; 
+    }
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 0;
+    }
+    .nav-menu.active {
+        transform: translateY(0); 
+        opacity: 1; 
+        visibility: visible;
+    }
+    .nav-menu a {
+        display: block; 
+        padding: 15px 20px; 
+        border-bottom: 1px solid #eee; 
+        color: #333; 
+        font-size: 16px;
+    }
     .package-card.featured { transform: scale(1); } 
     .floating-zalo { left: 20px; bottom: 20px; width: 50px; height: 50px; } 
     .floating-zalo img { width: 25px; height: 25px; } 
     .floating-phone { left: 20px; bottom: 85px; width: 50px; height: 50px; font-size: 20px; }
+    .floating-map { left: 20px; bottom: 150px; width: 50px; height: 50px; font-size: 20px; }
+    
     /* Giới thiệu mobile */
     .about-container { padding: 0 20px; }
     /* Header mobile cho gọn */
-    .header-contact a { font-size: 1.1rem; }
     .logo a { font-size: 1.1rem; gap: 10px; }
     .logo a img { width: 50px; height: 50px; }
     .header-container { height: 80px; }
     .hero { padding-top: 80px; }
+    
+    /* Flower Layout Mobile */
+    .flower-layout { grid-template-columns: 1fr; }
+    .center-circle {
+        position: relative; 
+        transform: none; 
+        top: 0; left: 0; 
+        margin: 0 auto 30px; 
+        width: 200px; height: 200px;
+    }
+    .petal-card {
+        border-radius: 15px !important; 
+        padding: 25px !important;
+    }
+    .package-tags {
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
 }
