@@ -477,6 +477,11 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; }
     
     /* Giới thiệu mobile */
     .about-container { padding: 0 20px; }
+    .about-premium {
+        background-attachment: scroll !important;
+        background-position: center center !important;
+    }
+    
     /* Header mobile cho gọn */
     .logo a { font-size: 1.1rem; gap: 10px; }
     .logo a img { width: 50px; height: 50px; }
