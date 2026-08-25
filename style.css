@@ -523,3 +523,39 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; }
         justify-content: center;
     }
 }
+
+/* SLIDER SẢN PHẨM LIÊN QUAN */
+.related-slider-wrapper { position: relative; overflow: hidden; padding: 10px 40px; }
+.related-slider-track { display: flex; gap: 20px; overflow-x: auto; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; }
+.related-slider-track::-webkit-scrollbar { display: none; }
+.related-slider-track a { flex-shrink: 0; text-decoration: none; }
+.related-slider-track .package-card {
+    width: 280px; /* Cố định chiều rộng */
+    flex-shrink: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ép nội dung lên trên */
+    padding: 10px; /* Khoảng cách từ ảnh đến viền vàng */
+    border: 2px solid #cfa85e; /* Viền vàng chuẩn */
+    background-color: #fff; /* Nền trắng cho nổi bật ảnh */
+}
+
+.related-slider-track .package-card img {
+    width: 100% !important;
+    height: 220px !important; /* Cố định chiều cao cho TẤT CẢ ảnh */
+    object-fit: cover !important; /* Tự động cắt cúp phần thừa, giữ đúng tỷ lệ hình */
+    object-position: center !important; /* Luôn canh ngay giữa trọng tâm bức ảnh */
+    margin-bottom: 15px; /* Tạo khoảng cách với chữ bên dưới */
+    border-radius: 0; /* Đảm bảo góc vuông sắc nét */
+}
+
+.related-slider-track .package-card h3 {
+    text-align: center;
+    font-size: 16px;
+    margin: 0;
+    color: #333;
+}
+.slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: #fff; color: #cfa85e; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10; transition: 0.3s; }
+.slider-btn:hover { background: #cfa85e; color: #fff; }
+.slider-btn.prev { left: 0; }
+.slider-btn.next { right: 0; }
